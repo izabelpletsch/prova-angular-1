@@ -14,4 +14,8 @@ export class LivroService {
   getLivros() : Observable<Livro[]> {
     return this.http.get<Livro[]>(this.url);
   }
+
+  deleteLivros(livro:Livro): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${livro.id}`);
+  }
 }

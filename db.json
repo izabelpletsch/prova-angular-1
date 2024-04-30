@@ -5,21 +5,21 @@
       "tituloLivro": "Pequeno Príncipe",
       "autorLivro": "Antoine de Saint-Exupéry",
       "editoraLivro": "Intrínseca",
-      "precoLivro": 42.90
+      "precoLivro": 42.9
     },
     {
       "id": 2,
       "tituloLivro": "A história de Despereaux",
       "autorLivro": "Kate DiCamillo",
       "editoraLivro": "Intrínseca",
-      "precoLivro": 83.50
+      "precoLivro": 83.5
     },
     {
       "id": 3,
       "tituloLivro": "Bíblia de Aparecida",
       "autorLivro": "Padre Zezinho",
       "editoraLivro": "Editora Aparecida",
-      "precoLivro": 70.00
+      "precoLivro": 70
     }
   ]
 }

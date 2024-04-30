@@ -19,7 +19,7 @@
       <td>{{livro.editoraLivro}}</td>
       <td>R$ {{livro.precoLivro}}</td>
       <td class="d-flex justify-content-end" style="gap: 12px">
-        <button class="btn btn-danger">Excluir</button> 
+        <button class="btn btn-danger" (click)="delete(livro)">Excluir</button> 
         <button class="btn btn-warning">Editar</button>  
       </td>
     </tr>
