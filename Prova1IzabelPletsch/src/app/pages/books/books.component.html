@@ -1,1 +1,27 @@
 <h1>Livros</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Título</th>
+      <th scope="col">Autor</th>
+      <th scope="col">Editora</th>
+      <th scope="col">Preço</th>
+      <th class="text-right" scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let livro of livros">
+      <th scope="row">{{livro.id}}</th>
+      <td>{{livro.tituloLivro}}</td>
+      <td>{{livro.autorLivro}}</td>
+      <td>{{livro.editoraLivro}}</td>
+      <td>R$ {{livro.precoLivro}}</td>
+      <td class="d-flex justify-content-end" style="gap: 12px">
+        <button class="btn btn-danger">Excluir</button> 
+        <button class="btn btn-warning">Editar</button>  
+      </td>
+    </tr>
+  </tbody>
+</table>
