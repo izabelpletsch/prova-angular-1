@@ -1,7 +1,18 @@
 $color-cambridge-green: #8FA399;
+$color-hoo-green: #657B70;
+$color-felgrau-green: #53655C;
+$color-cornflower-blue: #668EDA;
 
 html,body{
   height: 100%
+}
+
+h1 {
+  color: $color-felgrau-green;
+}
+
+h2 {
+  color: $color-cornflower-blue;
 }
 
 footer {
@@ -12,4 +23,19 @@ footer {
 
 .bg-green {
   background: $color-cambridge-green;
+}
+
+.btn-green {
+  background: $color-cambridge-green;
+  border-color: $color-hoo-green;
+
+  &:hover {
+    background: $color-hoo-green;
+    border-color: $color-hoo-green;
+  }
+
+  &:active {
+    background: $color-felgrau-green !important;
+    border-color: $color-felgrau-green !important;
+  }
 }
