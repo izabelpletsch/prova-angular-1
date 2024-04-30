@@ -18,4 +18,8 @@ export class LivroService {
   deleteLivros(livro:Livro): Observable<void> {
     return this.http.delete<void>(`${this.url}/${livro.id}`);
   }
+
+  postLivros(livro:Livro): Observable<Livro> {
+    return this.http.post<Livro>(this.url, livro);
+  }
 }

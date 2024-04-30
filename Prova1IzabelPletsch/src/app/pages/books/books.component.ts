@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Livro } from '../../services/livro';
 import { LivroService } from '../../services/livro.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-books',
@@ -9,6 +10,7 @@ import { LivroService } from '../../services/livro.service';
 })
 export class BooksComponent implements OnInit {
   livros: Livro[] = [];
+  formLivro: FormGroup;
 
   ngOnInit(): void {
     this.loadLivros();
@@ -16,7 +18,15 @@ export class BooksComponent implements OnInit {
 
   constructor(
     private service: LivroService,
-  ) {}
+    private formBuilder: FormBuilder,
+  ) {
+    this.formLivro = formBuilder.group({
+      tituloLivro: [''],
+      autorLivro: [''],
+      editoraLivro: [''],
+      precoLivro: ['']
+    })
+  }
 
   loadLivros() {
     this.service.getLivros().subscribe({
@@ -28,5 +38,15 @@ export class BooksComponent implements OnInit {
     this.service.deleteLivros(livro).subscribe({
       next: () => this.loadLivros(),
     });
+  }
+
+  onSubmit() {
+    this.service.postLivros(this.formLivro.value).subscribe({
+      next: (data) => {
+        this.livros.push(data);
+        this.formLivro.reset();
+        this.loadLivros();
+      },
+    })
   }
 }
