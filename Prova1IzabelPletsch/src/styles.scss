@@ -1,3 +1,5 @@
+$color-cambridge-green: #8FA399;
+
 html,body{
   height: 100%
 }
@@ -6,4 +8,8 @@ footer {
   bottom: 0;
   position: absolute;
   width: 100%;
+}
+
+.bg-green {
+  background: $color-cambridge-green;
 }
