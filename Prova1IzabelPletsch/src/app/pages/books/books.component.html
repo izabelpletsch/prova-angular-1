@@ -11,6 +11,7 @@
             type="text" 
             class="form-control form-control-lg" id="tituloLivro"
             formControlName="tituloLivro">
+            <small *ngIf="tituloLivro.hasError('required') && submitted" class="text-danger">O título do livro é obrigatório</small>
         </div>
       </div>
     

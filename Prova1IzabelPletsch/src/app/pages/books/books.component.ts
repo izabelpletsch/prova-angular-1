@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Livro } from '../../services/livro';
 import { LivroService } from '../../services/livro.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-books',
@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class BooksComponent implements OnInit {
   livros: Livro[] = [];
   formLivro: FormGroup;
+  submitted: boolean = false;
 
   ngOnInit(): void {
     this.loadLivros();
@@ -21,7 +22,7 @@ export class BooksComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.formLivro = formBuilder.group({
-      tituloLivro: [''],
+      tituloLivro: ['', Validators.required],
       autorLivro: [''],
       editoraLivro: [''],
       precoLivro: ['']
@@ -41,12 +42,21 @@ export class BooksComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.postLivros(this.formLivro.value).subscribe({
-      next: (data) => {
-        this.livros.push(data);
-        this.formLivro.reset();
-        this.loadLivros();
-      },
-    })
+    this.submitted = true;
+
+    if (this.formLivro.valid) {
+      this.service.postLivros(this.formLivro.value).subscribe({
+        next: (data) => {
+          this.livros.push(data);
+          this.submitted = false;
+          this.formLivro.reset();
+          this.loadLivros();
+        },
+      })
+    }
+  }
+
+  get tituloLivro(): any {
+    return this.formLivro.get("tituloLivro");
   }
 }
